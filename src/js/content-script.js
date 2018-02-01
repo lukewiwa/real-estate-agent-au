@@ -1,13 +1,26 @@
 import '../scss/content-script.scss'
 
-const terms = ['communal']
+const search_terms = ['communal']
 
-const highlight = () => {
-    console.log("hello!")
+const highlight = (terms) => {
     let paragraphs = document.getElementsByClassName("body")[0]
+    let extra = paragraphs.getElementsByTagName('span')[0]
+    let body
+    if (extra) {
+        let link = paragraphs.getElementsByClassName('more interesting')[0]
+        link.remove()
+        extra.remove()
+        body = paragraphs.innerHTML + extra.getAttribute("data-description")
+
+    }else{
+        body = paragraphs.innerHTML
+    }
     terms.forEach(term => {
-        paragraphs.innerHTML = paragraphs.textContent.replace(term, '<span class="highlight">${term}</span>')
+        let searchTerm = new RegExp("(" + term + ")", "gi") 
+        console.log(searchTerm)
+        body = body.replace(searchTerm, '<span class="highlight">$1</span>')
     })
+    paragraphs.innerHTML = body
 }
 
-window.onload = highlight()
+window.onload = highlight(search_terms)
