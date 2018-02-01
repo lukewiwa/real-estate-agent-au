@@ -26,5 +26,8 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.1",
     "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "bourbon-bitters": "^1.2.1"
   }
 }
