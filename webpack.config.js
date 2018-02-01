@@ -38,7 +38,7 @@ module.exports = {
       from: 'src/manifest.json'
     }]),
     new HtmlWebpackPlugin({
-      // template: path.join(__dirname, 'src', 'popup.html'),
+      template: path.join(__dirname, 'src', 'html', 'popup.html'),
       filename: 'popup.html',
       chunks: ['popup']
     }),
