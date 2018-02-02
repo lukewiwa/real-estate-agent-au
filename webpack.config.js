@@ -27,6 +27,12 @@ module.exports = {
       }, {
         loader: `sass-loader?includePaths[]=${bourbon}&includePaths[]=${bitters}` // compiles Sass to CSS
       }]
+    },
+    {
+      test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/
+    },
+    {
+      test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/
     }]
   },
   plugins: [
@@ -43,12 +49,12 @@ module.exports = {
       chunks: ['popup']
     }),
     new HtmlWebpackPlugin({
-      // template: path.join(__dirname, 'src', 'options.html'),
+      template: path.join(__dirname, 'src', 'html', 'options.html'),
       filename: 'options.html',
       chunks: ['options']
     }),
     new HtmlWebpackPlugin({
-      // template: path.join(__dirname, 'src', 'background.html'),
+      // template: path.join(__dirname, 'src', 'html', 'background.html'),
       filename: 'background.html',
       chunks: ['background']
     })
