@@ -1,9 +1,9 @@
 import './content-script.scss'
 
-const searchTerms = ['communal']
+const storageArea = chrome.storage.sync
+const paragraphs = document.getElementsByClassName('body')[0]
 
-const highlight = (terms) => {
-  let paragraphs = document.getElementsByClassName('body')[0]
+const getBody = () => {
   let extra = paragraphs.getElementsByTagName('span')[0]
   let body
   if (extra) {
@@ -14,12 +14,25 @@ const highlight = (terms) => {
   } else {
     body = paragraphs.innerHTML
   }
-  terms.forEach(term => {
-    let searchTerm = new RegExp('(' + term + ')', 'gi')
-    console.log(searchTerm)
-    body = body.replace(searchTerm, '<span class="highlight">$1</span>')
-  })
-  paragraphs.innerHTML = body
+  return body
 }
 
-window.onload = highlight(searchTerms)
+const highlight = (terms, body) => {
+  terms.forEach(term => {
+    let searchTerm = new RegExp('(' + term.word + ')', 'gi')
+    body = body.replace(searchTerm, '<span class="highlight">$1</span>')
+  })
+  return body
+}
+
+const replaceBody = (terms, body) => {
+  paragraphs.innerHTML = highlight(terms, body)
+}
+
+window.onload = storageArea.get(
+  'terms',
+  storage => {
+    let body = getBody()
+    replaceBody(storage.terms, body)
+  }
+)

@@ -18,5 +18,8 @@
         "content-script.bundle.js"
       ]
     }
+  ],
+  "permissions": [
+    "storage"
   ]
 }
