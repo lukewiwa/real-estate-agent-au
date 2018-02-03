@@ -1,4 +1,4 @@
-import '../scss/content-script.scss'
+import './content-script.scss'
 
 const searchTerms = ['communal']
 

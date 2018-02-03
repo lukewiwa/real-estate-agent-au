@@ -8,26 +8,37 @@ const bitters = require('bourbon-bitters').includePaths
 
 module.exports = {
   entry: {
-    popup: path.join(__dirname, 'src', 'js', 'popup.js'),
-    options: path.join(__dirname, 'src', 'js', 'options.js'),
-    background: path.join(__dirname, 'src', 'js', 'background.js'),
-    'content-script': path.join(__dirname, 'src', 'js', 'content-script.js')
+    popup: path.join(__dirname, 'src', 'popup', 'popup.js'),
+    options: path.join(__dirname, 'src', 'options', 'options.js'),
+    background: path.join(__dirname, 'src', 'background', 'background.js'),
+    'content-script': path.join(__dirname, 'src', 'content-scripts', 'content-script.js')
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js'
   },
   module: {
-    rules: [{
-      test: /\.scss$/,
-      use: [{
-        loader: 'style-loader' // creates style nodes from JS strings
-      }, {
-        loader: 'css-loader' // translates CSS into CommonJS
-      }, {
-        loader: `sass-loader?includePaths[]=${bourbon}&includePaths[]=${bitters}` // compiles Sass to CSS
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            scss: `vue-style-loader!css-loader!sass-loader?includePaths[]=${bourbon}&includePaths[]=${bitters}`, // <style lang="scss">
+            sass: `vue-style-loader!css-loader!sass-loader?indentedSyntax&includePaths[]=${bourbon}&includePaths[]=${bitters}` // <style lang="sass">
+          }
+        }
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: 'style-loader' // creates style nodes from JS strings
+        }, {
+          loader: 'css-loader' // translates CSS into CommonJS
+        }, {
+          loader: `sass-loader?includePaths[]=${bourbon}&includePaths[]=${bitters}` // compiles Sass to CSS
+        }]
       }]
-    }]
   },
   plugins: [
     new CleanWebpackPlugin(
@@ -38,12 +49,12 @@ module.exports = {
       from: 'src/manifest.json'
     }]),
     new HtmlWebpackPlugin({
-      // template: path.join(__dirname, 'src', 'popup.html'),
+      template: path.join(__dirname, 'src', 'popup', 'popup.html'),
       filename: 'popup.html',
       chunks: ['popup']
     }),
     new HtmlWebpackPlugin({
-      // template: path.join(__dirname, 'src', 'options.html'),
+      template: path.join(__dirname, 'src', 'options', 'options.html'),
       filename: 'options.html',
       chunks: ['options']
     }),

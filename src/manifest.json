@@ -2,6 +2,13 @@
   "manifest_version": 2,
   "name": "Real Estate Agent",
   "version": "0.0.1",
+  "browser_action": {
+    "default_title": "Popup",
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "options.html"
+  },
   "content_scripts": [
     {
       "matches": [

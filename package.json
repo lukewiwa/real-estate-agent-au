@@ -25,9 +25,12 @@
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.1",
+    "vue-loader": "^14.1.1",
+    "vue-template-compiler": "^2.5.13",
     "webpack": "^3.10.0"
   },
   "dependencies": {
-    "bourbon-bitters": "^1.2.1"
+    "bourbon-bitters": "^1.2.1",
+    "vue": "^2.5.13"
   }
 }
