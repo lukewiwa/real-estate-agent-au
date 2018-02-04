@@ -3,6 +3,7 @@ import './content-script.scss'
 const storageArea = chrome.storage.sync
 const paragraphs = document.getElementsByClassName('body')[0]
 
+// Get body of main text block
 const getBody = () => {
   let extra = paragraphs.getElementsByTagName('span')[0]
   let body
@@ -17,6 +18,7 @@ const getBody = () => {
   return body
 }
 
+//highlight the given terms in the body of the text
 const highlight = (terms, body) => {
   terms.forEach(term => {
     let searchTerm = new RegExp('(' + term.word + ')', 'gi')

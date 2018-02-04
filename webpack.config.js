@@ -48,6 +48,7 @@ module.exports = {
     new CopyWebpackPlugin([{
       from: 'src/manifest.json'
     }]),
+    // Use html template files for final html files
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'popup', 'popup.html'),
       filename: 'popup.html',
