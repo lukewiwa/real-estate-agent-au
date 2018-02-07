@@ -3,8 +3,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const bourbon = require('bourbon').includePaths
-const bitters = require('bourbon-bitters').includePaths
+// const bourbon = require('bourbon').includePaths
+// const bitters = require('bourbon-bitters').includePaths
 
 module.exports = {
   entry: {
@@ -21,24 +21,23 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-            scss: `vue-style-loader!css-loader!sass-loader?includePaths[]=${bourbon}&includePaths[]=${bitters}`, // <style lang="scss">
-            sass: `vue-style-loader!css-loader!sass-loader?indentedSyntax&includePaths[]=${bourbon}&includePaths[]=${bitters}` // <style lang="sass">
-          }
-        }
+        loader: 'vue-loader'
+        // options: {
+        //   loaders: {
+        //     scss: `vue-style-loader!css-loader!sass-loader?includePaths[]=${bourbon}&includePaths[]=${bitters}`, // <style lang="scss">
+        //     sass: `vue-style-loader!css-loader!sass-loader?indentedSyntax&includePaths[]=${bourbon}&includePaths[]=${bitters}` // <style lang="sass">
+        //   }
+        // }
       },
       {
-        test: /\.scss$/,
+        test: /\.css$/,
         use: [{
           loader: 'style-loader' // creates style nodes from JS strings
         }, {
           loader: 'css-loader' // translates CSS into CommonJS
-        }, {
-          loader: `sass-loader?includePaths[]=${bourbon}&includePaths[]=${bitters}` // compiles Sass to CSS
         }]
-      }]
+      }
+    ]
   },
   plugins: [
     new CleanWebpackPlugin(

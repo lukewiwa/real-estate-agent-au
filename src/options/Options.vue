@@ -48,12 +48,10 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-@import 'bourbon'
-
-ul 
-  list-style: none
-  padding-left: 0
-
+<style scoped>
+ul {
+  list-style: none;
+  padding-left: 0;
+}
 </style>
 

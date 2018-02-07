@@ -1,0 +1,5 @@
+
+.highlight {
+    --hl-color: yellow;
+    background-color: var(--hl-color);
+}

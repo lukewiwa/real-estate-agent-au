@@ -11,8 +11,6 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-@import 'bourbon'
-@import 'bitters'
+<style scoped>
 
 </style>

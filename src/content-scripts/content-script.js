@@ -1,4 +1,4 @@
-import './content-script.scss'
+import './content-script.css'
 
 const storageArea = chrome.storage.sync
 const paragraphs = document.getElementsByClassName('body')[0]
