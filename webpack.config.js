@@ -3,8 +3,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const bourbon = require('bourbon').includePaths
-// const bitters = require('bourbon-bitters').includePaths
 
 module.exports = {
   entry: {
@@ -22,12 +20,6 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader'
-        // options: {
-        //   loaders: {
-        //     scss: `vue-style-loader!css-loader!sass-loader?includePaths[]=${bourbon}&includePaths[]=${bitters}`, // <style lang="scss">
-        //     sass: `vue-style-loader!css-loader!sass-loader?indentedSyntax&includePaths[]=${bourbon}&includePaths[]=${bitters}` // <style lang="sass">
-        //   }
-        // }
       },
       {
         test: /\.css$/,
@@ -59,7 +51,6 @@ module.exports = {
       chunks: ['options']
     }),
     new HtmlWebpackPlugin({
-      // template: path.join(__dirname, 'src', 'background.html'),
       filename: 'background.html',
       chunks: ['background']
     })
