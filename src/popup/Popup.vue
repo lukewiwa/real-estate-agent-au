@@ -35,4 +35,8 @@ export default {
 
 <style scoped>
 
+#popup {
+  min-width: 30em;
+}
+
 </style>
