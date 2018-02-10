@@ -1,6 +1,7 @@
 import './content-script.css'
 
-const storageArea = chrome.storage.sync
+const browser = chrome
+const storageArea = browser.storage.sync
 const paragraphs = document.getElementsByClassName('body')[0]
 
 // Get body of main text block
@@ -39,7 +40,7 @@ window.onload = storageArea.get(
   }
 )
 
-chrome.runtime.onMessage.addListener(
+browser.runtime.onMessage.addListener(
   (request, sender, sendResponse) => {
     if (request.from === 'popup') {
       sendResponse({hello: 'world!'})

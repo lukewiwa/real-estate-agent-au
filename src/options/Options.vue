@@ -25,9 +25,7 @@ export default {
   },
   methods: {
     save: function () {
-      storageArea.set({ terms: this.terms }, () => {
-        console.log("success!")
-      })
+      storageArea.set({ terms: this.terms })
     },
     add: function (index) {
       this.terms.splice(index + 1, 0, Object.assign({}, this.empty))
