@@ -18,7 +18,7 @@ const getBody = () => {
   return body
 }
 
-//highlight the given terms in the body of the text
+// highlight the given terms in the body of the text
 const highlight = (terms, body) => {
   terms.forEach(term => {
     let searchTerm = new RegExp('(' + term.word + ')', 'gi')
@@ -36,5 +36,15 @@ window.onload = storageArea.get(
   storage => {
     let body = getBody()
     replaceBody(storage.terms, body)
+  }
+)
+
+chrome.runtime.onMessage.addListener(
+  (request, sender, sendResponse) => {
+    if (request.from === 'popup') {
+      sendResponse({hello: 'world!'})
+    } else {
+      sendResponse({fail: 'whale'})
+    }
   }
 )
