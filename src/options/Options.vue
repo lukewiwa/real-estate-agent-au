@@ -2,19 +2,15 @@
   <div id="options">
     <h1>Highlight These Terms</h1>
     <ul>
-      <li
-      class="input-group"
-      :key="index" 
-      v-for="(term, index) in terms">
-        <input class="form-control" v-model="term.word" required>
+      <li class="input-group" :key="index" v-for="(term, index) in terms">
+        <input class="form-control" v-model="term.word">
         <div class="input-group-append">
-          <button 
-          v-on:click="add(index)"
-          type="button"
-          class="btn btn-outline-success">+</button>
-          <button v-on:click="remove(index)"
-          type="button"
-          class="btn btn-outline-danger">-</button>
+          <button v-on:click="add(index)" type="button" class="btn btn-outline-success">
+            +
+          </button>
+          <button v-on:click="remove(index)" type="button" class="btn btn-outline-danger">
+            -
+          </button>
         </div>
       </li>
     </ul>
