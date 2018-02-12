@@ -1,16 +1,42 @@
 <template>
   <div id="popup">
 		<h1>My Popup</h1>
-    <p>Congratulations your popup worked</p>
+    <p>{{message}}</p>
 	</div>
 </template>
 
 <script>
+
+
+
 export default {
-  name: 'Popup'
+  name: 'Popup',
+  data () {
+    return {
+      message: ''
+    }
+  },
+  created: function () {
+    chrome.tabs.query(
+      {active: true, currentWindow: true},
+      (tabs) => {
+        chrome.tabs.sendMessage(
+          tabs[0].id,
+          {from: 'popup'},
+          (response) => {
+            this.message = response
+          } 
+        )
+      }
+    )
+  }
 }
 </script>
 
 <style scoped>
+
+#popup {
+  min-width: 30em;
+}
 
 </style>

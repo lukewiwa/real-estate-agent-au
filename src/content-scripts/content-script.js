@@ -1,6 +1,7 @@
 import './content-script.css'
 
-const storageArea = chrome.storage.sync
+const browser = chrome
+const storageArea = browser.storage.sync
 const paragraphs = document.getElementsByClassName('body')[0]
 
 // Get body of main text block
@@ -18,7 +19,7 @@ const getBody = () => {
   return body
 }
 
-//highlight the given terms in the body of the text
+// highlight the given terms in the body of the text
 const highlight = (terms, body) => {
   terms.forEach(term => {
     let searchTerm = new RegExp('(' + term.word + ')', 'gi')
@@ -36,5 +37,15 @@ window.onload = storageArea.get(
   storage => {
     let body = getBody()
     replaceBody(storage.terms, body)
+  }
+)
+
+browser.runtime.onMessage.addListener(
+  (request, sender, sendResponse) => {
+    if (request.from === 'popup') {
+      sendResponse({hello: 'world!'})
+    } else {
+      sendResponse({fail: 'whale'})
+    }
   }
 )
