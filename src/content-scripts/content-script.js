@@ -6,15 +6,22 @@ const paragraphs = document.getElementsByClassName('body')[0]
 
 // Get body of main text block
 const getBody = () => {
-  let extra = paragraphs.getElementsByTagName('span')[0]
   let body
-  if (extra) {
-    let link = paragraphs.getElementsByClassName('more interesting')[0]
-    link.remove()
-    extra.remove()
-    body = paragraphs.innerHTML + extra.getAttribute('data-description')
-  } else {
-    body = paragraphs.innerHTML
+  if (location.href.includes('realestate')) {
+    let extra = paragraphs.getElementsByTagName('span')[0]
+    if (extra) {
+      let link = paragraphs.getElementsByClassName('more interesting')[0]
+      link.remove()
+      extra.remove()
+      body = paragraphs.innerHTML + extra.getAttribute('data-description')
+    } else {
+      body = paragraphs.innerHTML
+    }
+  } else if (location.href.includes('domain')) {
+    let readMore = document.getElementsByClassName("button is-outline listing-details__description-button")[0]
+    readMore.click()
+    body = document.getElementsByClassName('listing-details__description')[0].innerHTML
+    console.log(body)
   }
   return body
 }
@@ -32,13 +39,15 @@ const replaceBody = (terms, body) => {
   paragraphs.innerHTML = highlight(terms, body)
 }
 
-window.onload = storageArea.get(
+storageArea.get(
   'terms',
   storage => {
-    let body = getBody()
-    replaceBody(storage.terms, body)
+    getBody().then(
+      body => replaceBody(storage.terms, body)
+    )
   }
 )
+
 
 browser.runtime.onMessage.addListener(
   (request, sender, sendResponse) => {

@@ -12,11 +12,13 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.realestate.com.au/property*"
+        "*://*.realestate.com.au/property*",
+        "*://*.domain.com.au/*"
       ],
       "js": [
         "content-script.bundle.js"
-      ]
+      ],
+      "run_at": "document_idle"
     }
   ],
   "permissions": [
