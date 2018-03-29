@@ -13,25 +13,25 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "clean-webpack-plugin": "^0.1.18",
-    "copy-webpack-plugin": "^4.3.1",
-    "css-loader": "^0.28.9",
-    "eslint": "^4.16.0",
-    "eslint-config-standard": "^11.0.0-beta.0",
-    "eslint-plugin-import": "^2.8.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.30.1",
-    "jest": "^22.4.2",
-    "style-loader": "^0.20.1",
-    "vue-loader": "^14.1.1",
-    "vue-template-compiler": "^2.5.13",
-    "webpack": "^3.10.0"
+    "jest": "^22.4.3",
+    "style-loader": "^0.20.3",
+    "vue-loader": "^14.2.2",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^3.11.0"
   },
   "dependencies": {
     "bootstrap": "^4.0.0",
-    "vue": "^2.5.13"
+    "vue": "^2.5.16"
   }
 }
